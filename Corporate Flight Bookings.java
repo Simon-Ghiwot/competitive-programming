@@ -1,12 +1,13 @@
 class Solution {
     public int[] corpFlightBookings(int[][] bookings, int n) {
-        int [] result = new int [n];
-        
-        for(int i = 0; i < bookings.length; i++){
-            for(int j = bookings[i][0]; j <= bookings[i][1]; j++){
-                result[j - 1] += bookings[i][2]; 
-            }
+        int[] result = new int[n];
+        for(int [] flight : bookings){
+            result[flight[0] - 1] += flight[2];
+            if(flight[1] < n)
+                result[flight[1]] -= flight[2];
         }
+        for(int i = 1; i < n; i++)
+            result[i] += result[i - 1];
         return result;
     }
 }
