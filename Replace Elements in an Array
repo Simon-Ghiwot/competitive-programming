@@ -1,0 +1,12 @@
+class Solution:
+    def arrayChange(self, nums: List[int], operations: List[List[int]]) -> List[int]:
+        mapping = {}
+        for i in range(len(nums)):
+            mapping[nums[i]] = i
+
+        for value, replace in operations:
+            index = mapping[value]
+            mapping.pop(value)
+            mapping[replace] = index
+            nums[index] = replace
+        return nums
