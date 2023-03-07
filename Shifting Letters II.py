@@ -15,7 +15,7 @@ class Solution:
         for i in range(1, len(final)):
             final[i] += final[i - 1]
         for i in range(len(final) - 1):
-            char = (s_ord[i] + final[i] - 97) % 26 + 97
+            char = (s_ord[i] + final[i] - 97 + 26) % 26 + 97
             result.append(chr(char))
 
         return "".join(result)
