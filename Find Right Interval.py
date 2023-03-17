@@ -9,7 +9,7 @@ class Solution:
 
         def search(end_interval, start_index):
             left, right = start_index, n - 1
-            ans = 10**7
+            ans = -1
 
             while left <= right:
                 mid = (left + right) // 2
@@ -18,7 +18,7 @@ class Solution:
                 else:
                     ans = interval_with_index[mid][2]
                     right = mid - 1
-            return -1 if ans == 10**7 else ans
+            return ans
 
         for i in range(n):
             start, end, index = interval_with_index[i]
