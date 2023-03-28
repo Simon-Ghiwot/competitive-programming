@@ -11,5 +11,7 @@ class Solution:
                 return None
             if root.val == val:
                 return root
-            return dfs(root.left, val) or dfs(root.right, val)
+            if root.val > val:
+                return dfs(root.left, val)
+            return dfs(root.right, val)
         return dfs(root, val)
