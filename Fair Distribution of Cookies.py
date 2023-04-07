@@ -1,6 +1,6 @@
 class Solution:
     def distributeCookies(self, cookies: List[int], k: int) -> int:
-        if len(cookies) == k:
+        if len(cookies) == k: # otherwise it TLE
             return max(cookies)
         self.ans = 10e6 + 600
         children = [0] * k
