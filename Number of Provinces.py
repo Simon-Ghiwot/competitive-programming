@@ -2,7 +2,7 @@ class Solution:
     def findCircleNum(self, isConnected: List[List[int]]) -> int:
         def dfs(grid, row, col):
             if row < 0 or col < 0 or row >= len(grid) or col >= len(grid[0]) or grid[row][col] == 0:
-                return 0
+                return
             grid[row][col] = 0
             dir = [[0, 1], [0, -1], [1, 0], [-1, 0]]
             for d in dir:
