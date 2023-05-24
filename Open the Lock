@@ -1,0 +1,29 @@
+class Solution:
+    def openLock(self, deadends: List[str], target: str) -> int:
+        if "0000" in deadends:
+            return -1
+        store, visited = set(deadends), set()
+        que = deque()
+        que.append("0000")
+        visited.add("0000")
+        time = 0
+        while que:
+            for i in range(len(que)):
+                at = que.popleft()
+                if at == target:
+                    return time
+                for j in range(4):
+                    cur = int(at[j])
+                    one = cur + 1 if cur != 9 else 0
+                    two = cur - 1 if cur != 0 else 9
+                    one_string = "".join(at[: j]) + str(one) + "".join(at[j + 1 :])
+                    two_string = "".join(at[: j]) + str(two) + "".join(at[j + 1 :])
+                    if one_string not in visited and one_string not in store:
+                        visited.add(one_string)
+                        que.append(one_string)
+                    if two_string not in visited and two_string not in store:
+                        visited.add(two_string)
+                        que.append(two_string)
+            time += 1
+        return -1
+                    
