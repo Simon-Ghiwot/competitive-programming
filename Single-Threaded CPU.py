@@ -1,4 +1,3 @@
-# ugly code but there are nicer and shorter code than this
 class Solution:
     def getOrder(self, tasks: List[List[int]]) -> List[int]:
         ordered = [(enq, pro, i) for i, (enq, pro) in enumerate(tasks)]
@@ -19,14 +18,11 @@ class Solution:
                 while i < len(tasks) and ordered[i][0] <= time:
                     add_to_heap(heap, i)
                     i += 1
-            if not heap:
-                cur = -1
-                if i < len(tasks):
-                    time += ordered[i][0]
-                    cur = ordered[i][0]
-                while i < len(tasks) and ordered[i][0] <= cur:
-                    add_to_heap(heap, i)
-                    i += 1
+            if not heap and i < len(tasks):
+                time += ordered[i][0]
+                add_to_heap(heap, i)
+                i += 1
+                    
         while heap:
             ans.append(heapq.heappop(heap)[1])
         return ans
