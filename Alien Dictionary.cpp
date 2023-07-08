@@ -35,8 +35,6 @@ class Solution{
     	string res = string(26, '?');
     	for(int i = 0; i < 26; i++)
 		    res[i] = (char) (ans[i] + 'a');
-		   return res;
-		    
-    	
+	return res;	
     }
 };
